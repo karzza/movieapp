@@ -9,34 +9,38 @@
         dataType: "json"
       });
       return masterResponse.done(function(data) {
-        var imdb, li, movie, movies, _i, _len, _results;
+        var imdb, li, movie, movies, _i, _len;
         movies = data.Search;
-        _results = [];
         for (_i = 0, _len = movies.length; _i < _len; _i++) {
           movie = movies[_i];
           imdb = movie.imdbID;
           li = "<li><a href='#' data-imdbid='" + imdb + "'>" + movie.Title + "</a></li>";
           console.log(li);
           $('.movies1').append(li);
-          _results.push($('a').click(function(e) {
-            var detailResponse, imdbID;
-            imdbID = $(this).data('imdbid');
-            detailResponse = $.ajax("http://www.omdbapi.com/?i=" + imdbID + "&plot=full", {
-              dataType: "json"
-            });
-            return detailResponse.done(function(movie) {
-              var poster;
-              console.log(movie);
-              poster = "<img src='" + movie.Poster + "'>";
-              console.log(poster);
-              $('.detail .title').html(movie.Title);
-              $('.detail .poster').html(poster);
-              $('.detail .year').html(movie.Year);
-              return $('.detail').append(movie.Plot);
-            });
-          }));
         }
-        return _results;
+        return $('a').click(function(e) {
+          var detailResponse, imdbID, movieName, searchTerms, word, _j, _len1;
+          imdbID = $(this).data('imdbid');
+          movieName = $(this).html();
+          searchTerms = movieName.split(" ");
+          for (_j = 0, _len1 = searchTerms.length; _j < _len1; _j++) {
+            word = searchTerms[_j];
+            console.log(word);
+          }
+          detailResponse = $.ajax("http://www.omdbapi.com/?i=" + imdbID + "&plot=full", {
+            dataType: "json"
+          });
+          return detailResponse.done(function(movie) {
+            var poster;
+            console.log(movie);
+            poster = "<img src='" + movie.Poster + "'>";
+            console.log(poster);
+            $('.detail .title').html(movie.Title);
+            $('.detail .poster').html(poster);
+            $('.detail .year').html(movie.Year);
+            return $('.detail').append(movie.Plot);
+          });
+        });
       });
     });
   });
