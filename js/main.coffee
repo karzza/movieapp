@@ -26,9 +26,11 @@ $ ->
         # 3. Make it into array
         searchTerms = movieName.split(" ")
         # 4. For loop on each element
-        for word in searchTerms
+        for word, index in searchTerms
           console.log word
         # 5. Add the search terms
+          listIndex = index + 2
+          $('h1.list' + listIndex).html(word)
 
         # 6. Show data based on 1st search term
         # 7. Show data based on 2nd search term

@@ -19,13 +19,15 @@
           $('.movies1').append(li);
         }
         return $('a').click(function(e) {
-          var detailResponse, imdbID, movieName, searchTerms, word, _j, _len1;
+          var detailResponse, imdbID, index, listIndex, movieName, searchTerms, word, _j, _len1;
           imdbID = $(this).data('imdbid');
           movieName = $(this).html();
           searchTerms = movieName.split(" ");
-          for (_j = 0, _len1 = searchTerms.length; _j < _len1; _j++) {
-            word = searchTerms[_j];
+          for (index = _j = 0, _len1 = searchTerms.length; _j < _len1; index = ++_j) {
+            word = searchTerms[index];
             console.log(word);
+            listIndex = index + 2;
+            $('h1.list' + listIndex).html(word);
           }
           detailResponse = $.ajax("http://www.omdbapi.com/?i=" + imdbID + "&plot=full", {
             dataType: "json"
