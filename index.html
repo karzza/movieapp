@@ -2,13 +2,59 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>movies</title>
+  <title>search</title>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <script src="js/main.js"></script>
+
   <link rel="stylesheet" href="css/style.css"></link>
 </head>
 <body>
-<h1>moviesapp</h1>
-<p> total recall is an awesome movie kate beckinsale is hot</p>
+<h1>wikisearchApp</h1>
+<form id="search">
+<input id="searchField" type="search"></input>
+</form>
+<button id="searchButton">Button</button>
+<p> this is a wikipedia search app that connects to wikipedia for the user to retrieve info</p>
+<div>
+  <div class="data1">
+  <ul class="movies1">
+  </ul>
+  </div>
+  <div class="data2">
+   <ul>
+    <li>The 100</li>
+    <li>matrix reloaded</li>
+    <li> Top gun</li>
+    <li>24</li>
+   <li> game of thrones</li>
+   <li>The Avengers</li>
 
+  </ul>
+  </div>
+
+  <div class="data3">
+    <ul>
+    <li>nikita</li>
+    <li>Top gun </li>
+   </ul>
+  </div>
+  <div class="data4">
+    <ul>
+    <li>napolean</li>
+    <li>spartacus</li>
+    <li>blood and sand</li>
+    </ul>
+  </div>
+
+
+<div class="master">
+  <ul class="movies"></ul>
+</div>
+<div class="detail">
+  <h1 class="title"></h1>
+  <h2 class="year"></h2>
+  <div class="poster"></div>
+</div>
 </body>
 </html>
